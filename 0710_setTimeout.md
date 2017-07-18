@@ -22,7 +22,7 @@ setTimeout 에 의해 호출되는 함수는 자체 호출 스택을 가지므�
 setTimeout(function(){}, n) 이 실행되면 현재 스택은 비워지고 n ms 후에 실행된다.timeout 을 0 으로 설정한다면(지연시킬 시간이 없다면), 
 setTimeout 은 스택을 푸는 즉시 실행되게 된다.</br>
 이는 싱글스레드에서 비동기 코드를 실행시키는 데에 유용한 트릭이다.</br>
-`setTimeout(callback, 0)`을 통해 함수를 실행시키면 알고리즘이 non-blocking, asynchronous 지만, 실행은 효율적인 선형 순서로 차단된다.  
+`setTimeout(callback, 0)`을 통해 함수를 실행시키면 알고리즘이 non-blocking, asynchronous 이라 실행은 효율적인 선형 순서로 차단된다.  
 > 사실 해결은 되지만, 좋은 방법은 아니다.
 > 내가 생각한대로 비동기 함수 진행이 안될수도 ... 
 
