@@ -8,6 +8,7 @@ setTimeout(function() {
 ```javascript
 // bad
 // setTimeout 의 첫번째 인자로 문자열이 넘어가면 돌아가기는 하지만 느리다. 
+// 성능 문제를 이유로 첫번째 인자에는 callback 함수를 넣어주는 것이 좋다. 
 setTimeout(console.log("Hello!!"), 3000);
 ```
 ## 1. 시간 간격을 둔 함수 실행
