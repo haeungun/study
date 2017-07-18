@@ -31,5 +31,5 @@ document.querySelector("#contact").addEventListener("click", function() {
 따라서 하나의 부모 DOM 을 만들어서 이벤트 처리를 하는 것이 바로 **이벤트 델리게이션 패턴**이다. 
 
 이벤트 델리게이션 패턴의 작동원리는 HTML 에서 이벤트 버블링을 통해 이벤트를 상위 DOM 으로 전달할 수 있다는 데 기인한다. <br>
-> [이벤트 버블링과 캡처링](./)
+> [이벤트 버블링과 캡처링](./Event_Capturing_and_Bubbling.md)
 
