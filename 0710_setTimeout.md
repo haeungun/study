@@ -5,7 +5,11 @@ setTimeout(function() {
   console.log("Hello!!");
 }, 3000);
 ```
-
+```javascript
+// bad
+// setTimeout 의 첫번째 인자로 문자열이 넘어가면 느리다. 
+setTimeout(console.log("Hello!!"), 3000);
+```
 ## 1. 시간 간격을 둔 함수 실행
 
 기본적으로 특정 함수나 기능을 바로 실행시키지 않고, 약간의 시간 간격을 두고 실행되게 하고 싶을 경우 사용
