@@ -49,7 +49,7 @@ document.querySelector("#box3").addEventListener("click", function() {
 "This is a box2"
 "This is a box1"
 ```
-만약 다음과 같이 box2 의 이벤트 캡처 여부를 true 로 설정한 후에, 다시 box3 를 클릭하면 box2 의 이벤트가 캡처링 단계에서 실행되게 된다.
+만약 다음과 같이 box2 의 이벤트 캡처 여부를 true 로 설정한 후에 다시 box3 를 클릭하면,<br> box2 의 이벤트가 캡처링 단계에서 실행되게 된다.
 ```javascript
 document.querySelector("#box2").addEventListener("click", function() {
      console.log(`This is a ${this.id}`);
