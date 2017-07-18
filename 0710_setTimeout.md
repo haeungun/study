@@ -7,7 +7,7 @@ setTimeout(function() {
 ```
 ```javascript
 // bad
-// setTimeout 의 첫번째 인자로 문자열이 넘어가면 느리다. 
+// setTimeout 의 첫번째 인자로 문자열이 넘어가면 돌아가기는 하지만 느리다. 
 setTimeout(console.log("Hello!!"), 3000);
 ```
 ## 1. 시간 간격을 둔 함수 실행
