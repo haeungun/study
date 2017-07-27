@@ -75,7 +75,7 @@ foo();
               }()),
          "delete": (function() {
                     appendDiv.innerHTML = "":
-                    return document.createTextNode("Cleared);
+                    return document.createTextNode("Cleared");
                  })
       }
    }
