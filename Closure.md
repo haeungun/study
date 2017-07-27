@@ -74,9 +74,9 @@ foo();
                  }
               }()),
          "delete": (function() {
-                    appendDiv.innerHTML = "":
-                    return document.createTextNode("Cleared");
-                 })
+                 appendDiv.innerHTML = "":
+                 return document.createTextNode("Cleared");
+              }())
       }
    }
 })
