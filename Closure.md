@@ -101,3 +101,23 @@ for (var i = 0; i < arr.length; i++) {
 > 위 코드를 실행하면 각 인덱스에서 3초씩 지연된 후 `0,1,2,3` 이 찍히는 것이 아니라 모두 4가 찍힌다.</br>
 > 문제의 원인은 `setTimeout`의 스코프와 `for` 반복문 안의 스코프가 다르기 때문이다.
 > 이를 해결하는 방법 중 2 가지는 아래와 같다.
+
+```javascript
+const arr = [10, 12, 15, 21];
+for (var i = 0; i < arr.length; i++) {
+   setTimeout(function(i_local)) {
+      return function() {
+         console.log("index number ::", i);
+      }
+   }(i), 3000);
+}
+```
+```javascript
+const arr = [10, 12, 15, 21];
+for (let i = 0; i < arr.length; i++) {
+   // ES6 의 let 은 함수가 호출 될 때 마다 인덱스 i 값이 바인딩 되는 새로운 바인딩 기법을 사용한다.
+   setTimeout(function() {
+      console.log("index number ::", i);
+   }, 3000);
+}
+```
