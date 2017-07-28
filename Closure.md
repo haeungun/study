@@ -104,9 +104,10 @@ for (var i = 0; i < arr.length; i++) {
 ```javascript
 const arr = [10, 12, 15, 21];
 for (var i = 0; i < arr.length; i++) {
-   setTimeout(function(i_local)) {
+   // i 값 을 setTime 함수 안에 전달하여 각 함수 호출마다 올바른 값에 접근하게 한다.
+   setTimeout(function(i_local)) {
       return function() {
-         console.log("index number ::", i);
+         console.log("index number ::", i_local);
       }
    }(i), 3000);
 }
