@@ -33,3 +33,13 @@ document.querySelector("#contact").addEventListener("click", function() {
 이벤트 델리게이션 패턴의 작동원리는 HTML 에서 이벤트 버블링을 통해 이벤트를 상위 DOM 으로 전달할 수 있다는 데 기인한다. <br>
 > [이벤트 버블링과 캡처링](./Event_Capturing_and_Bubbling.md)
 
+### Event Delegation 사용법
+이벤트 델리게이션 패턴 사용법은 매우 간단하다. 이벤트를 걸어줄 element 들을 감싸는 하나의 상위 element 에 이벤트를 걸어주고, 이벤트의 타겟을 확인하여 이벤트가 발생하도록 해준다. 
+```javascript
+document.querySelector("#menu").addEventListener("click", function(e) {
+    if (e.target.nodeName === "LI") {
+        console.log(`This is ${e.target.id}`);
+    }
+});
+```
+훨씬 코드가 간결해졌다. 하나의 리스너가 element 들을 옮겨(?) 다니며 작동하므로, 기존의 모든 element 들에 이벤트 리스너를 달아주어야했던 코드보다 효율적으로 작동된다. 
