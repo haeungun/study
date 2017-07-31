@@ -62,14 +62,15 @@ foo();
       
       var callback = {
          "1": (function() {
-                 // 클로저 
-                 var div = document.createElement("div");
+                 // 클로저 활용 2 : 콜백함수에서 추가할 HTML element 를 만들어주는 변수 활용
+                 var div = document.createElement("div");
                  div.innerHTML = "Adding new div";
                  return function() {
                     return div.cloneNode(true);
                  }
               }()),
          "2": (function() {
+                 // 클로저 활용 3 : 콜백함수에서 추가할 HTML element 를 만들어주는 변수 활용
                  var img = document.createElement("img");
                  img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsXUtxNPqBET8CdLgZ-ByWd6pa9AQioyOl-Drf2G7dhaC65irp6Q";
                  return function() {
