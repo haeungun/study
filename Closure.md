@@ -51,7 +51,8 @@ foo();
 </div>
 <script>
 (function() {
-   var appendDiv = document.getElementById("appendDiv");
+   // 클로저 활용 1: appendDiv 를 미리 가져와서 한번의 초기화만으로 이후의 함수들이 계속 접근할 수 있게 해준다. 
+   var appendDiv = document.getElementById("appendDiv");
    document.getElementById("wrapper").addEventListener("click", append);
    
    function append(e) {
@@ -61,6 +62,7 @@ foo();
       
       var callback = {
          "1": (function() {
+                 // 클로저 
                  var div = document.createElement("div");
                  div.innerHTML = "Adding new div";
                  return function() {
@@ -83,6 +85,14 @@ foo();
 })
 </script>
 ```
+
+### 클로저의 단점
+
+- 클로저는 메모리를 소모한다.
+> 클로저를 생성할 때는 하나의 커다란 클로저를 생성하기보다는 각 변수나 함수들의 생명주기를 분석한 다음 효율적으로 나누면 좋다.
+> 예를 들어, 지속 가능한 서로 다른 변수들이 있으면 해당 변수들은 묶어서 클로저를 별도로 관리하는 것이 메모리를 효율적으로 사용하는 방법이다. 
+
+- 스코프 생성과 이후 변수 조회에 따른 퍼포먼스 손해가 있다. 
 
 ### 클로저의 면접 활용
 
