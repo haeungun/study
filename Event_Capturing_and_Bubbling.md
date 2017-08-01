@@ -38,6 +38,8 @@ HTML 은 기본적으로 트리구조의 DOM 을 표현한다. <br>
 - 버블링 단계: 이벤트 객체가 대상의 부모로부터 window 객체까지 역순으로 전파된다. 
 
 
+### 실제 동작
+
 아래 코드를 동작시켜보자.
 
 [캡처링과 버블링 테스트](https://codepen.io/anon/pen/OgYZGP?editors=1011)
@@ -76,3 +78,5 @@ document.querySelector("#box2").addEventListener("click", function() {
 "This is a box3"
 "This is a box1"
 ```
+
+이벤트 캡처링을 통해서 클릭 이벤트를 부모 DOM 에서 완료한 다음, 이벤트 전파를 `event.stopPropagation()` 함수로 막는다면 브라우저상에서 이벤트 대상 단계와 이벤트 버블링 단계의 추가적인 이벤트 전달로 인한 자원 소모를 조금이라도 아낄 수 있다.
