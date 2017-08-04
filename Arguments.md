@@ -50,3 +50,26 @@ function sum() {
     return sum;
 }
 ```
+
+### ES6/2015
+ES6 에서는 다음과 같은 방법으로 가변 인자를 처리할 수 있다. 
+```javascript
+function printItems(...items) {
+    items.forEach((item) => {
+        console.log(item);
+    })
+}
+```
+
+```javascript
+function printItems(category, ...items) {
+    items.forEach((item) => {
+        console.log(item);
+    })
+}
+
+printItems("NAME") // undefined
+printItems("NAME", "haeun") // haeun
+printItems("NAME", "haeun", "donghee") // haeun, donghee
+```
+
