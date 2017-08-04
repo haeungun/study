@@ -41,7 +41,7 @@ function foo() {
 
 ### 파라미터 갯수가 동적인 함수
 처음부터 함수에 들어올 인자의 갯수가 몇 개 인지 알 수 없는 경우가 있을 수 있다. 혹은 일일히 다 정의해주기 힘들거나 그럴 필요가 없는 경우도 있다.
-```
+```javascript
 function sum() {
     var sum = 0;
     for (var i in arguments) {
