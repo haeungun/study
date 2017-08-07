@@ -14,6 +14,7 @@ const mySingleton = (function() {
       }
       
       return {
+         // Public members
          publicMethod: function() {
             console.log("The public can see me!");
          },
