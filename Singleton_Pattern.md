@@ -6,15 +6,15 @@ const mySingleton = (function() {
       // Singleton
       
       // Private members
+      const privateVariable = "I'm also private";
+      const privateRandomNumber = Math.random();
+      
       function privateMethod() {
          console.log("I am private");
       }
       
-      const privateVariable = "I'm also private";
-      const privateRandomNumber = Math.random();
-      
       return {
-         publicMethos: function() {
+         publicMethod: function() {
             console.log("The public can see me!");
          },
          
