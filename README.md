@@ -1,3 +1,3 @@
-# WebBasic
+# Web Frontend Basic
 
-웹(이라지만 대부분이 javascript)에 관한 기본적인 지식들 
+웹 프론트엔드에 관한 기본적인 지식들 
