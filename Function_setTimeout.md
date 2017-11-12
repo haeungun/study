@@ -1,9 +1,17 @@
 # Javascript 에서 setTimeout 의 활용
 
+setTimeout() 의 시간은 정확한 실행 시간이 아닌, 실행 큐에 들어가는 시간을 의미한다.
+javascript 는 단일 스레드 기반의 언어이다. 
+따라서 하나의 스레드가 task 실행할 순서를 담아 놓는 큐가 있고, setTimeout() 의 시간설정은 큐에 들어가는 시간을 설정하는 것이다.
+
+따라서 setTimeout(func, 0) 으로 실행될 함수 func 가 큐에 들어갔는데 그보다 앞서 실행될 task 가 큐에 있다면
+큐에 있는 함수들의 실행이 모두 끝난 후에 func 가 실행된다. 
+
 ```javascript
 setTimeout(function() {
   console.log("Hello!!");
 }, 3000);
+// setTimeout(func, 3000) 은 3초 후에 실핸하는 것이 아니라 3초 후에 큐에 들어가는 것
 ```
 ```javascript
 // bad
