@@ -108,9 +108,8 @@ aaaaa.bbbbb.ccccc
 Header 는 두 가지의 정보를 지니고 있다. 
 - type : 토큰의 타입을 지정한다. 
 - alg : 해싱 알고리즘을 지정한다. 이 알고리즘은 토큰을 검증할 때 사용되는 signature 부분에서 사용된다. 
-<br>
-- 예시<br>
-````
+
+````javascript
 {
    "typ": "JWT",
    "alg": "HS256"
