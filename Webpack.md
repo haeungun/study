@@ -8,12 +8,12 @@
 
 
 ### Webpack vs Gulp
-Webpack 은 Package Bundler 이며, Gulp 는 Task Runer 이다. 
+`Webpack` 은 `Package Bundler` 이며, `Gulp` 는 `Task Runer` 이다. 
 
 - Package Bundler : 종속성을 가진 애플리케이션 모듈을 정적인 소스로 재생산
 - Task Runner : 반복 가능한 특정 작업을 자동화
 
-쉽게 말하면 Task Runner 는 그저 미리 정의해 놓은 어떤 작업을 실행하는 것이도 Package Bundler 는 말 그대로 
+쉽게 말하면 `Task Runner` 는 그저 미리 정의해 놓은 어떤 작업을 실행하는 것이고 `Package Bundler` 는 말 그대로 
 어떤 소스들을 하나로 패키지화 하는 것이다. 
 
 ### Webpack
