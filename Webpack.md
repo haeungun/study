@@ -30,23 +30,28 @@ Webpack 은 다음과 같은 특징을 갖는다.
 - CommonJS(nodejs)와 AMD(requires) 스펙 지원
 
 <br>
-Webpack 은 크게 Entry, Output, Loader, Plug-In 4가지로 나눌 수 있다
+Webpack 은 크게 Entry, Output, Loader, Plug-In 4가지로 나눌 수 있다.
+<br>
 - Entry
+
 ````
 Webpack 은 모든 애플리케이션에 대한 종속성 그래프를 작성하고 이 그래프의 시작점을 Entry Point 라고 한다. 
 이 Entry Point 를 통해 모듈이 어디서부터 시작하는지를 명세하는 애플리케이션을 시작하는 첫번째 파일로 나타낼 수 있다.
 ````
 - Output
+
 ````
 Output 은 모든 애플리케이션의 자산(resource 또는 assets)을 하나의 Bundle 로 묶었으면 해당 Bundle 을 처리하는 
 방법을 명세한다.
 ````
 - Loader
+
 ````
 Loader 는 사전에 처리할 작업을 나타내며 css, html, jpg, scss 등의 자산을 하나의 모듈로 취급하며 
 이러한 파일들을 종속성 그래프에 추가할 때 모듈로 변환한다. 
 ````
 - Plug-In 
+
 ````
 Plug-In 은 일반적인 Complie 또는 모듈 처리에 필요한 작업 및 사용자 정의 기능을 수행하는데 사용한다.
 ````
