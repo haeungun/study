@@ -7,7 +7,7 @@
 웹팩은 프론트엔드 빌드툴 중의 하나 이다. <br>
 
 
-### Webpack vs Gulp
+## Webpack vs Gulp
 `Webpack` 은 `Package Bundler` 이며, `Gulp` 는 `Task Runner` 이다. 
 
 - Package Bundler : 종속성을 가진 애플리케이션 모듈을 정적인 소스로 재생산
