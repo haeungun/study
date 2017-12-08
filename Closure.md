@@ -10,6 +10,7 @@
 > 클로저는 이너함수가 스코프 밖에 있는 변수에 접근하는 것</br>
 > [MDN Closure](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Closures)
 
+
 ### 스코핑
 ```javascript
 function init() {
@@ -28,6 +29,8 @@ init();
 그래서 **부모 함수에서 선언된 변수 `name` 을 사용할 수 있다.**
 
 ### 클로저
+클로저가 나타나는 가장 기본적인 환경은 스코프 안에 스코프가 있을 때, 즉 function 안에 function 이 선언되었을 때 이다. 
+
 ```javascript
 function myFunction() {
    const name = "Haeun";
