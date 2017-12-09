@@ -56,7 +56,7 @@ LAN 은 Local Area Network 의 줄임말로 우리나라 말로 풀어쓰자면 
  
  ### OSI 7 계층과 TCP/IP 4계층
  TCP/IP 계층은 OSI 7 계층을 단순화 시켜서 4개의 계층으로 만든다.
- 
+ [OSI 7 계층](./osi7layer.md)
  
  
  
