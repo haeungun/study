@@ -1,3 +1,4 @@
+## Javascript
 ```javascript
 const mySingleton = (function() {
    const instance;
