@@ -9,7 +9,7 @@
 - 단일 개체와 복합 개체를 같은 방법으로 사용할 수 있도록 Leaf 와 Composite 를 일반화 하여 트리로 만들어서 단일 개체와 복합개체에서 사용하는 모든 기능을 트리에서 제공
 
 ## Class Diagram
-
+<img src="../images/composite_pattern.png"/>
 
 ## Example
 ````java
