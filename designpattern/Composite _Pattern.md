@@ -4,16 +4,9 @@
 - 예시: 파일/폴더, 파워포인트 도형 그룹화
 
 ## Struct
-### Component
-
-
-### Leaf
-- 단일 개체
-
-### Composite
-- 복합 개체
-- 단일 개체와 복합 개체를 자식요소로 포함 가능
-
+- Leaf 는 단일 개체, Composite 는 복합 개체
+- Composite 는 Leaf 와 Composite 개체를 자식 요소로 포함 가능
+- 단일 개체와 복합 개체를 같은 방법으로 사용할 수 있도록 Leaf 와 Composite 를 일반화 하여 트리로 만들어서 단일 개체와 복합개체에서 사용하는 모든 기능을 트리에서 제공
 
 ## Class Diagram
 
