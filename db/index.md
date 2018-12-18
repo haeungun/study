@@ -43,9 +43,44 @@ B-Tree 인덱스를 이용한 검색은 완전히 일치하거나 값의 앞부�
 사용할 수 없다. 또한 인덱스의 키 값을 변형하여 비교하는 경우에는 인덱스를 사용 할 수 없다. 
 
 ## Hash 인덱스
-- 컬럼의 값으로 해시 값을 계싼해서 인덱싱하는 알고리즘으로 매우 빠른 검색을 지원
+- 컬럼의 값으로 해시 값을 계산해서 인덱싱하는 알고리즘으로 매우 빠른 검색을 지원
 - 값을 변형해서 인덱싱하므로, prefix 일치와 같이 값의 일부만 검색하고자 할 때는 해시 인덱스 사용 불가
 - 메모리 기반의 데이터베이스에서 많이 사용
+
+해시 인덱스는 동등 비교 검색에는 최적화 되어 있지만 범위를 검색하거나 정렬된 결과를 가져오는 목적으로는 사용할 수 없다. 
+일반적인 DBMS 에서 해시 인덱스는 메모리 기반의 테이블에 주로 구현되어 있고, 디스크 기반의 대용량 테이블로는 거의 사용되지 않는다는 특징이 있다. 
+해시 인덱스 알고리즘은 테이블의 인덱스 뿐 아니라, InnoDB 의 버퍼풀에서 빠른 레코드 검색을 위한 Adaptive Hash Index 로 사용되기도 하고, 
+오라클과 같은 DBMS 에서는 조인에 사용되기도 한다.
+
+해시 인덱스는 실제 키 값과는 상관없이 인덱스의 크기가 작고 검색이 빠르다. 
+> 원래의 키 값을 저장하는 것이 아니라 해시 함수의 결과를 저장하기 때문에 B-tree 인덱스보다 상당히 크기를 줄일 수 있음
+
+또한 해시 인덱스는 트리 형태의 구조가 아니므로 검색하고자 하는 값을 주면 해시 함수를 거쳐서 찾고자 하는 키 값이 포함된 버켓을 알아낼 수 있다. 
+> 트리 내에서 여러 노드를 읽어서 레코드 주소를 알아내는 B-tree 보다 빠르게 검색이 가능함
+
+#### 작업 범위 제한 조건으로 해시 인덱스를 사용하는 쿼리
+동등 비교 조건으로 값을 검색하면 해시 인덱스의 장점을 그대로 이용할 수 있다.
+````SQL
+SELECT .. FROM tableName WHERE column = 'query';
+SELECT .. FROM tableName WHERE column <=> 'query';
+SELECT .. FROM tableName WHERE column IN ('query', 'query2');
+SELECT .. FROM tableName WHERE column IS NULL;
+SELECT .. FROM tableName WHERE column IS NOT NULL;
+````
+> `IN` 연산자도 결국 여러 개의 동등 비교로 풀어서 처리하기 때문에 같은 효과를 얻을 수 있음.</br>
+> `<=>` 연산자(NULL-Safe Equal)는 비교 양쪽의 값이 `NULL` 이 있을 때는 제외하고는 `=` 연산자와 동일
+
+#### 해시 인덱스를 전혀 사용하지 못하는 쿼리
+크다 또는 작다 기반의 검색은 해시 인덱스를 사용할 수 없다. 범위비교나 부정형 비교는 해시인덱스를 사용할 수 없다. 
+````SQL
+SELECT .. FROM tableName WHERE column >= 'query';
+SELECT .. FROM tableName WHERE column BETWEEN 100 AND 200;
+SELECT .. FROM tableName WHERE column LIKE 'query%';
+SELECT .. FROM tableName WHERE column <> 'query';
+````
+다중 컬럼으로 생성된 해시 인덱스에서도 모든 칼럼이 동등 조건으로 비교되는 경우에만 인덱스를 사용할 수 있다. 
+
+MySQL MEMORY 스토리지 엔진에서는 특별히 인덱스 알고리즘은 명시하지 않으면 기본적으로 해시 인덱스가 적용된다. 
 
 ## Fractal-Tree 인덱스
 - B-Tree 의 단점을 보완하기 위한 알고리즘
