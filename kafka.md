@@ -63,3 +63,58 @@
 파티션 수를 무작정 늘리다보면 예상치 못한 문제들이 발생할 수 있으므로 적잘한 값으로 설정해서 운영해주는 것이 좋다. 
 카프카에서는 브로커당 약 2,000개 정도의 최대 파티션 수를 권장하고 있다. 
 
+## 프로듀서의 메시지 전송 방법
+### 메시지를 보내고 확인하지 않는 방법
+프로듀서에서 서버로 메시지를 보내고 난 후에 성공 여부를 확인하지 않는다. 메시지 전송에 실패할 경우 프로듀서가 자동으로 재전송하기 때문에 대부분 
+성공적으로 전송되지만 일부 메시지의 손실에 대해 보장하지 않는다. 
+```java
+Producer<String, String> producer = new KafkaProducer<>(props);
+try {
+  producer.send(new ProducerRecord<String, String>("test-topic", "Hello World!"));
+} catch (Exception e) {
+  // 브로커에게 메시지를 보낸 후의 에러는 무시하지만, 보내기 전에 에러가 발생하면 예외 처리 가능
+  e.printStackTrace();
+} finally {
+  producer.close();
+}
+```
+
+### 동기적으로 전송하는 방법
+프로듀서는 메시지를 전송하고 `send()` 메소드의 `Future` 객체를 리턴한다. `get()` 메소드를 사용해서 `Future` 를 기다린 후 `send()`의 
+성공 여부를 확인할 수 있다. 브로커에 전송한 메시지마다 확인하여 신뢰성있는 메시지 전송이 가능하다. 
+```java
+Producer<String, String> producer = new KafkaProducer<>(props);
+try {
+  // get() 메소드로 카프카의 응답을 기다림
+  // 메시지가 성공적으로 전송되지 않으면 예외 발생
+  RecordMetadata meta = producer.send(new ProducerRecord<String, String>("test-topic", "Hello World!")).get();
+  System.out.printf("partition: %d, offset: %d", meta.partition(), meta.offset());
+} catch (Exception e) {
+  // 재시도가 가능한 예외: 커넥션 에러...
+  // 재시도가 불가능한 예외: 메시지크기가 너무 큰 경우...
+  e.printStackTrace();
+} finally {
+  producer.close();
+}
+```
+
+### 비동기로 전송하는 방법
+`send()` 메소드를 콜백과 같이 호출하고, 브로커에서 응답을 받으면 콜백한다. 동기적으로 메시지를 전송할 경우 모든 메시지에 대해 응답을 기다리게 
+되기 때문에 전송시간이 더 많이 소요된다. 
+비동기적으로 전송할 경우 응답을 기다리지 않기 때문에 더욱 빠른 전송이 가능하다. 메시지 전송에 실패한다면 예외 처리를 할 수 있다. 
+```java
+class MyCallback implements Callback {
+  @Override
+  public void onCompletion(RecordMetadata meta, Exception e) {
+    if (e != null) {
+      // 메시지 전송 실패 
+    } else {
+      // 메시지 전송 성공
+    }
+  }
+}
+
+...
+// 프로듀서에서 레코드를 보낼 때 콜백 오브젝트도 같이 보냄
+producer.send(new ProducerRecord<String, String>("test-topic", "Hello World!"), new MyCallback());
+```
